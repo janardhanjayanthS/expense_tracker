@@ -11,7 +11,8 @@ def add_expense():
     description: str = input('Enter description: ')
     amount: int | float = prompt_amount()
     category: str = promt_category()
-    
+    date: str = prompt_date()
+    is_recurring: bool = prompt_recurrance()
     
 def prompt_amount() -> int | float:
     """
@@ -51,6 +52,32 @@ def promt_category() -> str:
                 print('Enter a valid number from 1 to 5')
         except ValueError:
             print('Enter a valid number from 1 to 5')
+
+def prompt_date() -> str:
+    """
+    prompts for date in 'YYYY-MM-DD' format
+    """
+    while True:
+        date: str = input("Enter date in 'YYYY-MM-DD' format: ")
+        try:
+            date_object: dt = dt.strptime(date, "Y-%m-%d")
+            return date
+        except ValueError:
+            print('Enter valid date')
+
+def prompt_recurrance():
+    """
+    prompt for recurrence either True or False
+    """
+    while True:
+        recurrance_choice: str = input('Is the expense recurrance: Y-yes/N-no').upper()
+        if recurrance_choice in {'Y', 'N'}:
+            return recurrance_choice
+        else:
+            print('Enter a valid choice between Y for yes or N for no')
+
+# def match_recurrance_choice(choice: str) -> bool:
+    
 
 if __name__ == '__main__':
     

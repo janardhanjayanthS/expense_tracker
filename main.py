@@ -1,6 +1,5 @@
 from datetime import datetime as dt
-
-
+from .csv import append_expense
 
 
 def add_expense():
@@ -19,6 +18,14 @@ def add_expense():
     print(category)
     print(date)
     print(is_recurring)
+    append_expense(
+        description=description,
+        amount=amount,
+        category=category,
+        date=date,
+        is_recurring=is_recurring
+    )
+
     
 def prompt_amount() -> int | float:
     """

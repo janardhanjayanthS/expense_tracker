@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-from .csv import append_expense
+from csv_utility import append_expense
 
 
 def add_expense():

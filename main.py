@@ -13,7 +13,7 @@ def add_expense():
     category: str = promt_category()
     date: str = prompt_date()
     is_recurring: bool = prompt_recurrance()
-    print('Expense information: ')
+    print('Expense information')
     print(description)
     print(amount)
     print(category)
@@ -26,7 +26,7 @@ def prompt_amount() -> int | float:
     """
     while True:
         try:
-            amount: int | float = float(input('Enter amount'))
+            amount: int | float = float(input('Enter amount: '))
             if amount > 0:
                 return amount
             else:
@@ -51,13 +51,13 @@ def promt_category() -> str:
 
     while True:
         try:
-            choice: int = int(input('Enter catergory 1 - 5'))
+            choice: int = int(input('Enter catergory 1 - 5: '))
             if choice in category_dict.keys():
                 return category_dict[choice]
             else:
-                print('Enter a valid number from 1 to 5')
+                print('Enter a valid number from 1 to 5: ')
         except ValueError:
-            print('Enter a valid number from 1 to 5')
+            print('Enter a valid number from 1 to 5: ')
 
 def prompt_date() -> str:
     """
@@ -76,7 +76,7 @@ def prompt_recurrance():
     prompt for recurrence either True or False
     """
     while True:
-        recurrance_choice: str = input('Is the expense recurrance: Y-yes/N-no').upper()
+        recurrance_choice: str = input('Is the expense recurrance: Y-yes/N-no: ').upper()
         if recurrance_choice in {'Y', 'N'}:
             return True if recurrance_choice == 'Y' else False
         else:

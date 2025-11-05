@@ -32,8 +32,6 @@ def add_expense():
     ))
 
     
-
-    
     
 
 if __name__ == '__main__':

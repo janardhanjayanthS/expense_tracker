@@ -10,3 +10,4 @@ class Expense:
     date: str
     is_recurring: bool
 
+

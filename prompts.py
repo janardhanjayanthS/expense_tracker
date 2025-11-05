@@ -1,3 +1,5 @@
+from datetime import datetime as dt
+from helpers import Expense
 
 
 def prompt_amount() -> int | float:
@@ -61,3 +63,13 @@ def prompt_recurrance():
             return True if recurrance_choice == 'Y' else False
         else:
             print('Enter a valid choice between Y for yes or N for no')
+
+def print_expense_message(expense: Expense):
+    """
+    Returns a formatted string for displaying an expense
+    Retruns:
+
+    """
+    print('-----')
+    print(f'Expense Description: {expense.description} \nExpense Amount: {expense.amount} \nExpense category: {expense.category} \nExpense date: {expense.date} \nExpense recurrance: {expense.is_recurring}')
+    print('-----')

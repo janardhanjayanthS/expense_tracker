@@ -1,6 +1,6 @@
-from datetime import datetime as dt
 
-from csv_utility import append_expense
+
+from csv_utility import append_expense, get_expenses
 from helpers import Expense
 from prompts import *
 
@@ -31,7 +31,24 @@ def add_expense():
             is_recurring=is_recurring
     ))
 
-    
+
+def display_expense():
+    """
+    Displays all the expenses that are stored in expenses.csv file
+    """    
+    expenses = get_expenses()
+    if expenses:
+        for expense in expenses:
+            print_expense_message(Expense(
+                description=expense['description'],
+                amount=expense['amount'],
+                category=expense['category'],
+                date=expense['date'],
+                is_recurring=expense['is_recurring']
+            ))
+    else:
+        print('There are no expenses')
+
     
 
 if __name__ == '__main__':
@@ -39,10 +56,15 @@ if __name__ == '__main__':
     while True:
         print('Expense Tracker: ')
         print('1. Add Expense')
+        print('2. Display all expenses')
 
-
-        choice = int(input('Enter Your choice from 1 to : '))
+        choice = int(input('Enter Your choice from 1 to 3: '))
 
         if choice == 1:
-            add_expense()
-        
+            add_expense()  
+        elif choice == 2:
+            display_expense()       
+        elif choice == 3:
+            break
+        else:
+            print('Enter a valid choice between 1 and 3!') 
